@@ -1,1 +1,44 @@
-theme: jekyll-theme-merlot
+title: Solo Gaming Appreciation Month
+description: >- # this means to ignore newlines until "baseurl:"
+        A community effort by the Lone Wolf Role-Playing Google+ community.
+
+        **SGAM** occurs for the duration of November, and is dedicated to the 
+        enjoyment of solitaire tabletop gaming.
+
+        Use the **#SGAM** and **#SGAM2017** tags on social media to join in!
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://sologamingmonth.com" # the base hostname & protocol for your site, e.g. http://example.com
+
+author:
+  name: 'Lone Wolf Roleplaying'
+  email: gm@sologamingmonth.com
+  gplus_username: communities/116965157741523529510
+  github_username:  sologamingmonth
+
+defaults:
+  -
+    scope:
+      path: ''
+      type: 'posts'
+    values:
+        layout: 'post'
+
+# Build settings
+destination: _site
+paginate: 10
+permalink: /:year/:title/
+markdown: kramdown
+highlighter: rouge
+
+sass:
+    sass_dir: _sass
+    style: compressed
+
+kramdown:
+  # use Github Flavored Markdown
+  #input: GFM
+  # do not replace newlines by <br>s
+  #hard_wrap: true
+
+plugins: ['jekyll-paginate']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
