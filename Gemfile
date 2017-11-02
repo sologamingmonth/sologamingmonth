@@ -25,6 +25,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# bundle exec jekyll serve recommended:
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+# bundle exec jekyll serve recommended, but it wouldn't load?
+#gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
