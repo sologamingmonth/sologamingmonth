@@ -12,14 +12,4 @@ of solitaire gaming. For more information,
 
 Submit pull requests to the develop` branch.
 
-### Useful Info for G+
-
-embedded posts: https://developers.google.com/+/web/embedded-post/
-
-Create a `div` element with `class="g-post"` and a `data-href="<link to G+>"`
-
-```html
-    <div class="g-post" data-href="https://plus.google.com/114124401690420551118/posts/8u5Vb7kXG6w"></div>
-```
-
-more g+ stuff: https://developers.google.com/+/web/
+Info for G+ integration: https://developers.google.com/+/web/
