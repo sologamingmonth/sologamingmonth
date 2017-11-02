@@ -1,16 +1,33 @@
 <!-- G+ Comments: Thanks https://gist.github.com/brandonb927/6433230 -->
-<div id="commentscounter"></div>
+<!-- <div id="commentscounter"></div> -->
 <div id="comments"></div>
 <script>
-    gapi.commentcount.render('commentscounter', {
-        href: window.location
-    });
+    if(window.attachEvent) {
+        window.attachEvent('onload', yourFunctionName);
+    } else {
+        if(window.onload) {
+            var curronload = window.onload;
+            var newonload = function(evt) {
+                curronload(evt);
+                yourFunctionName(evt);
+            };
+            window.onload = newonload;
+        } else {
+            window.onload = yourFunctionName;
+        }
+    }
+    
+    function renderComments() {
+        // gapi.commentcount.render('commentscounter', {
+        //     href: window.location
+        // });
 
-    gapi.comments.render('comments', {
-        href: window.location,
-        width: '624',
-        first_party_property: 'BLOGGER',
-        view_type: 'FILTERED_POSTMOD'
-    });
+        gapi.comments.render('comments', {
+            href: window.location,
+            width: '624',
+            first_party_property: 'BLOGGER',
+            view_type: 'FILTERED_POSTMOD'
+        });
+    }
 </script>
 <!-- G+ Comments END -->
