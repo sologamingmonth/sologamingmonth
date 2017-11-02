@@ -1,19 +1,18 @@
 title: Solo Gaming Appreciation Month
 description: >- # this means to ignore newlines until "baseurl:"
-        A community effort by the Lone Wolf Role-Playing Google+ community.
-
-        **SGAM** occurs for the duration of November, and is dedicated to the 
+        A community effort by the Lone Wolf Role-Playing Google+ community,
+        SGAM occurs for the duration of November, and is dedicated to the 
         enjoyment of solitaire tabletop gaming.
 
-        Use the **#SGAM** and **#SGAM2017** tags on social media to join in!
+        Use the #SGAM and #SGAM2017 tags on social media to join in!
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://sologamingmonth.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://sologamingmonth.com"
 
 author:
-  name: 'Lone Wolf Roleplaying'
+  name: 'Solo Gaming Appreciation Month'
   email: gm@sologamingmonth.com
   gplus_username: communities/116965157741523529510
-  github_username:  sologamingmonth
+  github_username: sologamingmonth
 
 defaults:
   -
@@ -34,7 +33,7 @@ sass:
     sass_dir: _sass
     style: compressed
 
-kramdown:
+#kramdown:
   # use Github Flavored Markdown
   #input: GFM
   # do not replace newlines by <br>s

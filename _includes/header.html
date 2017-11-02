@@ -8,9 +8,9 @@
 
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
-        <a href="{{ site.baseurl }}/" title="link to home of {{ site.title }}">
-          <!--<img src="{{ site.baseurl }}/images/profile.jpg" class="user-image" alt="My Profile Photo">
-          <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>-->
+        <a href="{{ site.baseurl }}/" title="{{ site.title }}">
+          <!-- <img src="{{ site.baseurl }}/images/sgamlogo.png" class="user-image" alt="SGAM Logo"> -->
+          <!-- <h1 class="panel-cover__title panel-title">{{ site.title }}</h1> -->
           {% include logosvg.html %}
         </a>
         <hr class="panel-cover__divider">
@@ -24,8 +24,9 @@
             solitaire tabletop gaming.
         </p>
         <p>
-            Use the <strong style="color: red;">#SGAM</strong> and 
-            <strong style="color: red;">#SGAM2017</strong> tags on social media 
+            Use the <a href="#sgam" class="blog-button" style="color: red;">#SGAM</a> and 
+            <a href="#sgam" class="blog-button" style="color: red;">#SGAM2017</a> 
+            tags on <s>social media</s> <a href="https://plus.google.com">Google+</a>
             to join in!
         </p>
         </div>
@@ -35,9 +36,10 @@
 
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-                <li class="navigation__item"><a href="{{ site.baseurl }}/sgam2017" title="#SGAM2017" class="blog-button">SGAM 2017</a></li>
-                <li class="navigation__item"><a href="{{ site.baseurl }}/#blog" title="SGAM News" class="blog-button">News</a></li>
-                <li class="navigation__item"><a href="{{ site.baseurl }}/about" title="About SGAM" class="blog-button">What is SGAM?</a></li>
+                <li class="navigation__item"><a href="{{ site.baseurl }}/sgam2017" title="#SGAM2017" style="color: red;">SGAM 2017</a></li>
+                <li class="navigation__item"><a href="{{ site.baseurl }}/#sgam" title="#SGAM2017">#SGAM Tag Feed</a></li>
+                <li class="navigation__item"><a href="{{ site.baseurl }}/news" title="SGAM News">News</a></li>
+                <li class="navigation__item"><a href="{{ site.baseurl }}/about" title="About SGAM">What is SGAM?</a></li>
             </ul>
           </nav>
 
