@@ -3,17 +3,17 @@
 <div id="comments"></div>
 <script>
     if(window.attachEvent) {
-        window.attachEvent('onload', yourFunctionName);
+        window.attachEvent('onload', renderComments);
     } else {
         if(window.onload) {
             var curronload = window.onload;
             var newonload = function(evt) {
                 curronload(evt);
-                yourFunctionName(evt);
+                renderComments(evt);
             };
             window.onload = newonload;
         } else {
-            window.onload = yourFunctionName;
+            window.onload = renderComments;
         }
     }
     
