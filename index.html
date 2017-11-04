@@ -138,13 +138,15 @@ robots: noindex
     const TEMPLATE = ({ url, title, excerpt, published, actor, access, object }) => `
         <li class=".post">
             <h2 class="post-list__post-title post-title"><a href="${url}" title="${title}">${title}</a></h2>
-            <p class="excerpt">${object.content}</p>
+            <p class="excerpt">${object.content.split(" ").splice(0,300).join(" ")}&hellip;</p>
             <div class=post-list__meta>
-                <strong>                [${access.description}]</strong>
+				<span class="post-meta__tags">${object.plusoners.totalItems} <strong><em>+1<sup>s</sup></em></strong>
+				| ${object.replies.totalItems} <strong><em>Replies</strong></span>
+                &#8226; <strong>[${access.description}]</strong>
             </div>
             <div class="post-list__meta">
                 <time datetime="${published}" class="post-list__meta--date date">${published}</time>
-                &#8226;<span class="post-meta__tags">by <a href="${actor.url}">${actor.displayName}</a></span>
+                &#8226; <span class="post-meta__tags">by <a href="${actor.url}">${actor.displayName}</a></span>
             </div>
             <hr class="post-list__divider">
         </li>

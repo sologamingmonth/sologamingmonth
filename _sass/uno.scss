@@ -960,7 +960,7 @@ h5 {
 
 h1 {
 	margin-top: 0;
-	font-size: 3.2em;
+	font-size: 2.8em;
 	line-height: 1.2em;
 	letter-spacing: .05em; }
 
@@ -1675,7 +1675,7 @@ input[type="tel"] {
 	.navigation__item {
 		width: 100%;
 		margin: 0 0 .4em 0; } }
-@media all and (max-width: 340px) {
+@media all and (max-width: 415) {
 	.panel-main__inner {
 		padding: 0 5%; }
 
@@ -1689,3 +1689,7 @@ input[type="tel"] {
 	.btn, .navigation__item a {
 		display: block;
 		margin-bottom: .4em; } }
+		
+	.main-post-list {
+		overflow: hidden;
+	}
