@@ -13,7 +13,7 @@ in 2015 by [+Steven Lincoln](https://plus.google.com/+StevenLincolnTCS/posts/ZvZ
 at the [**Lone Wolf Role-Playing G+**](https://plus.google.com/communities/116965157741523529510) 
 community and has continued annually since.
 
-<div class="g-community" data-layout="landscape" data-width="450" data-href="https://plus.google.com/communities/116965157741523529510"></div>
+<div class="g-community" data-layout="portrait" data-width="300" data-href="https://plus.google.com/communities/116965157741523529510"></div>
 
 While John never anticipated that it would go past that first month, amazing 
 people like +Alex Yari, +Chris Stieha, and everyone else at the  
