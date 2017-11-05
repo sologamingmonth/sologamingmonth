@@ -12,15 +12,15 @@ sitemap:
     @version: %%buildVersion%%
  */
 
-var gplusSGAM = (function ( $ ) {
+var SGAMgplus = (function ( $ ) {
 
     /*
         Private members
     */
-    const TEMPLATE = ({ url, title, excerpt, published, actor, access, object }) => `
+    const TEMPLATE = ({ url, title, published, actor, access, object }) => `
         <li class=".post">
             <h2 class="post-list__post-title post-title"><a href="${url}" title="${title}">${title}</a></h2>
-            <p class="excerpt">${object.content.split(" ").splice(0,300).join(" ")}&hellip;</p>
+            <p class="excerpt">${object.content}&hellip;</p>
             <div class=post-list__meta>
 		 <strong>[${access.description}]</strong>   &#8226;
 				<span class="post-meta__tags">${object.plusoners.totalItems} <strong><em>+1<sup>s</sup></em></strong>
@@ -36,6 +36,12 @@ var gplusSGAM = (function ( $ ) {
     `;
 
     const API_KEY = 'AIzaSyAFcDZXBXqX6y2K9EHmv6v3-w2oTekPIRA';
+    const SEARCH_QUERY = '#SGAM | #SGAM2017';
+    const FEED_SELECTOR = '#gplus-tag-feed';
+    const FIELDS_REQUIRED = 'url,title,published,actor(url,displayName),access(description),object(content,attachments/url)';
+    const EXCERPT_WORDCOUNT = 300;
+    
+    var pageToken;
 
     /**
      * Start the app by setting the API key and loading the client
@@ -54,22 +60,41 @@ var gplusSGAM = (function ( $ ) {
      * Search g+ activities for hashtag(s) and 
      *  render results to the template.
      */
-    function loadHashtags() {
-        var searchQuery = '#SGAM | #SGAM2017';
-        var feedSelector = '#gplus-tag-feed';
+    function loadHashtags() { 
+        var more = false;
         
+        // Query the API
         gapi.client.plus.activities.search({
-          'query' : searchQuery
+          'query'       : SEARCH_QUERY,
+          'fields'      : FIELDS_REQUIRED,
+          'pageToken'   : this.pageToken
         }).then(function(response) {
             
+            // Set up pagination in return object
+            if(response.body.nextPageToken) {
+                this.nextPageToken = response.body.nextPageToken;
+                more = true;
+            }
+            
+            // Create an excerpt of the content
+            if(response.body.object.content) {
+                response.body.object.content = response.body.object.content
+                    .split(" ").splice(0,EXCERPT_WORDCOUNT).join(" ");
+            }
+            else {
+                response.body.object.content = '';
+            }
+            
             // Map activityResource to HTML template
-            $(feedSelector).html(
+            $(FEED_SELECTOR).html(
                 $.parseJSON(response.body).items.map(TEMPLATE).join('')
             );
         
         }, function(reason) {
             console.log('Error: ' + reason.result.error.message);
         });
+        
+        return more;
     }
     
     /**
@@ -110,27 +135,15 @@ var gplusSGAM = (function ( $ ) {
      */
     function infiniteScroll() {
         if (shouldScroll(".post-list ol li:last")) {
-            // Load more stuff
+
+            // Stop the pagination
             $(document).unbind('scroll');
             
-            // TODO: Convert to use GAPI / paginate
-			$.ajax({
-				type: "GET",
-				url: "https://www.googleapis.com/plus/v1/activities",
-				data: { 
-                    query: '#SGAM #SGAM2017') 
-                    //index_count: $('#index_count').attr('value'),json: "true"
-                    // pageToken: nextPageToken
-                }
-			}).done(function( msg ) {
-				$(".post-list ol").append(msg.html);
-				$('#index_count').attr('value',msg.index_count);
-				if (msg.count != 0) {
-					$(document).scroll(function(e){
-						//callback to the method to check if the user scrolled to the last element of your list/feed 
-					})
-				}
-			});
+            // Load more stuff
+            if( loadHashtags() ) {
+                // Bind pagination to the scroll event
+                $(document).scroll(infiniteScroll);
+            }
         };
     }
     
@@ -168,8 +181,7 @@ var gplusSGAM = (function ( $ ) {
 // Pull in jQuery
 })( jQuery );
 
-gplusSGAM.startApp();
-
+SGAMgplus.startApp();
 
 /*
     The above template maps to activityResource objects...
@@ -297,8 +309,3 @@ gplusSGAM.startApp();
         }
 
 */
-
-
-
-
-
