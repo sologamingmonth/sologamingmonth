@@ -2,33 +2,7 @@
 <!-- <div id="commentscounter"></div> -->
 <hr class="comments__divider">
 <div id="comments"></div>
-<script>
-    if(window.attachEvent) {
-        window.attachEvent('onload', renderComments);
-    } else {
-        if(window.onload) {
-            var curronload = window.onload;
-            var newonload = function(evt) {
-                curronload(evt);
-                renderComments(evt);
-            };
-            window.onload = newonload;
-        } else {
-            window.onload = renderComments;
-        }
-    }
-    
-    function renderComments() {
-        // gapi.commentcount.render('commentscounter', {
-        //     href: window.location
-        // });
-
-        gapi.comments.render('comments', {
-            href: window.location,
-            width: '300',
-            first_party_property: 'BLOGGER',
-            view_type: 'FILTERED_POSTMOD'
-        });
-    }
+<script>  
+    SGAMgplus.renderComments();
 </script>
 <!-- G+ Comments END -->

@@ -22,8 +22,8 @@ var SGAMgplus = (function ( $ ) {
             <h2 class="post-list__post-title post-title"><a href="${url}" title="${title}">${title}</a></h2>
             <p class="excerpt">${object.content}&hellip;</p>
             <div class=post-list__meta>
-		 <strong>[${access.description}]</strong>   &#8226;
-				<span class="post-meta__tags">${object.plusoners.totalItems} <strong><em>+1<sup>s</sup></em></strong>
+		 <strong>[${access.description}]</strong>
+				&#8226; <span class="post-meta__tags">${object.plusoners.totalItems} <strong><em>+1<sup>s</sup></em></strong>
 				| ${object.replies.totalItems} <strong><em>Replies</em></strong></span>
 
             </div>
@@ -36,65 +36,83 @@ var SGAMgplus = (function ( $ ) {
     `;
 
     const API_KEY = 'AIzaSyAFcDZXBXqX6y2K9EHmv6v3-w2oTekPIRA';
-    const SEARCH_QUERY = '#SGAM | #SGAM2017';
+    const EXCERPT_WORDCOUNT = 150;
     const FEED_SELECTOR = '#gplus-tag-feed';
-    const FIELDS_REQUIRED = 'url,title,published,actor(url,displayName),access(description),object(content,attachments/url)';
-    const EXCERPT_WORDCOUNT = 300;
+    const FIELDS_REQUIRED = 'nextPageToken,items/url,items/title,items/published,'
+                          + 'items/access/description,items/actor(url,displayName),'
+                          + 'items/object(content,plusoners/totalItems,replies/totalItems)';
+    const MAX_RESULTS = 10;
+    const SEARCH_QUERY = '#SGAM | #SGAM2017';
     
-    var pageToken;
+    var PageToken;
 
     /**
      * Start the app by setting the API key and loading the client
      */
     function init() {      
-        gapi.load('auth2', function() {
-            gapi.client.setApiKey(API_KEY)     
-            gapi.client.load('plus','v1').then(loadHashtags);
-        });
+        // gapi.load('client', function() {
+            // gapi.client.setApiKey(API_KEY)     
+            // gapi.client.load('plus','v1').then(loadHashtags);
+        // });
+        
+        gapi.load('client', initClient);
     
         // Bind pagination to the scroll event
-        $(document).scroll(infiniteScroll);
+        //$(document).scroll(infiniteScroll);
+    }
+    
+    /**
+     * Initializes the g+ api client
+     */
+    function initClient() {
+        gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/plus/v1/rest']
+        }).then(infiniteScroll)
     }
     
     /**
      * Search g+ activities for hashtag(s) and 
      *  render results to the template.
      */
-    function loadHashtags() { 
-        var more = false;
-        
+    function loadHashtags() {       
         // Query the API
         gapi.client.plus.activities.search({
           'query'       : SEARCH_QUERY,
           'fields'      : FIELDS_REQUIRED,
-          'pageToken'   : this.pageToken
+          'maxResults'  : MAX_RESULTS,
+          'pageToken'   : PageToken
         }).then(function(response) {
             
-            // Set up pagination in return object
-            if(response.body.nextPageToken) {
-                this.nextPageToken = response.body.nextPageToken;
-                more = true;
-            }
+            // Convert to JSON
+            var result = $.parseJSON(response.body);
+            var items = result.items;
             
-            // Create an excerpt of the content
-            if(response.body.object.content) {
-                response.body.object.content = response.body.object.content
-                    .split(" ").splice(0,EXCERPT_WORDCOUNT).join(" ");
+            // Set up pagination in return object
+            if(PageToken !== result.nextPageToken 
+                && items.length === MAX_RESULTS) {
+                PageToken = result.nextPageToken;
             }
             else {
-                response.body.object.content = '';
+                PageToken = null;
             }
-            
+
+            // Create an excerpt of the content           
+            $.each(items, function(k, v) {
+                    v.object.content = v.object.content.split(' ')
+                        .splice(0,EXCERPT_WORDCOUNT).join(' ');
+            });
+
             // Map activityResource to HTML template
-            $(FEED_SELECTOR).html(
-                $.parseJSON(response.body).items.map(TEMPLATE).join('')
-            );
+            $(FEED_SELECTOR).append(items.map(TEMPLATE).join(''));
         
         }, function(reason) {
             console.log('Error: ' + reason.result.error.message);
+        }).then(function() {
+            if(PageToken) {
+                $(document).scroll(infiniteScroll);
+            }
         });
-        
-        return more;
     }
     
     /**
@@ -134,16 +152,14 @@ var SGAMgplus = (function ( $ ) {
      * Pagination
      */
     function infiniteScroll() {
-        if (shouldScroll(".post-list ol li:last")) {
+        // See if the last <li> is within view
+        if ( shouldScroll( FEED_SELECTOR + ' li:last') ) {
 
             // Stop the pagination
             $(document).unbind('scroll');
             
             // Load more stuff
-            if( loadHashtags() ) {
-                // Bind pagination to the scroll event
-                $(document).scroll(infiniteScroll);
-            }
+            loadHashtags();
         };
     }
     
@@ -155,23 +171,23 @@ var SGAMgplus = (function ( $ ) {
         /**
          * Initialize the application
          */
-        startApp: function(){
-            $(document).ready(function () {
+        go: function(){
+            //$(document).ready(function () {
                 init();
-            });
+            //});
         },
         
         /**
          * Render g+ comments on comment-enabled pages.
          */
-        function renderComments() {
+        renderComments: function() {
             // gapi.commentcount.render('commentscounter', {
             //     href: window.location
             // });
 
             gapi.comments.render('comments', {
                 href: window.location,
-                width: '300', // TODO: pct of window width
+                width: (window.screen.availWidth * .08),
                 first_party_property: 'BLOGGER',
                 view_type: 'FILTERED_POSTMOD'
             });
@@ -181,7 +197,11 @@ var SGAMgplus = (function ( $ ) {
 // Pull in jQuery
 })( jQuery );
 
-SGAMgplus.startApp();
+//SGAMgplus.startApp();
+
+function startApp() {
+    SGAMgplus.go();
+}
 
 /*
     The above template maps to activityResource objects...
