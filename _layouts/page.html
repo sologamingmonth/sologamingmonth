@@ -10,5 +10,9 @@ layout: default
   <section class="post">
     {{ content }}
   </section>
+  
+  <footer>
+    {% if page.comments != false %}{% include gpluscomments.html %}{% endif %}
+  </footer>
 
 </article>

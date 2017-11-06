@@ -24,8 +24,8 @@
             enjoyment of <strong>solitaire tabletop gaming</strong>.
         </p>
         <p>
-            Use the <a href="#sgam" class="blog-button" style="color: red;">#SGAM</a> and 
-            <a href="#sgam" class="blog-button" style="color: red;">#SGAM2017</a> 
+            Use the <a href="{{ site.baseurl }}/#sgam" class="blog-button" style="color: red;">#SGAM</a> and 
+            <a href="{{ site.baseurl }}/#sgam" class="blog-button" style="color: red;">#SGAM{{ site.time | date: '%Y' }}</a> 
             tags on <s>social media</s> <a href="https://plus.google.com">Google+</a>
             to join in!
         </p>
@@ -37,7 +37,7 @@
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
                 <li class="navigation__item"><a href="{{ site.baseurl }}/sgam2017" title="#SGAM2017" style="color: red;">SGAM 2017</a></li>
-                <li class="navigation__item"><a href="{{ site.baseurl }}/#sgam" title="#SGAM2017">#SGAM Tag Feed</a></li>
+                <li class="navigation__item"><a href="{{ site.baseurl }}/#sgam" class="blog-button" title="#SGAM2017">#SGAM Tag Feed</a></li>
                 <li class="navigation__item"><a href="{{ site.baseurl }}/news" title="SGAM News">News</a></li>
                 <li class="navigation__item"><a href="{{ site.baseurl }}/about" title="About SGAM">What is SGAM?</a></li>
             </ul>
@@ -75,23 +75,23 @@
                 </a>
               </li>
             {% endif %}
-
-            {% if site.author.github_username %}
-              <!-- GitHub -->
-              <li class="navigation__item">
-                <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" target="_blank">
-                  <i class="icon icon-social-github"></i>
-                  <span class="label">GitHub</span>
-                </a>
-              </li>
-            {% endif %}
-            
+           
             {% if site.author.gplus_username %}
               <!-- Google+ -->
               <li class="navigation__item">
                 <a href="https://plus.google.com/{{ site.author.gplus_username }}" title="{{ site.author.gplus_username }} on Google+" target="_blank">
                   <i class="icon icon-social-google-plus"></i>
                   <span class="label">Google+</span>
+                </a>
+              </li>
+            {% endif %}
+            
+            {% if site.author.github_username %}
+              <!-- GitHub -->
+              <li class="navigation__item">
+                <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" target="_blank">
+                  <i class="icon icon-social-github"></i>
+                  <span class="label">GitHub</span>
                 </a>
               </li>
             {% endif %}

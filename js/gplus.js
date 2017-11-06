@@ -19,7 +19,7 @@ var SGAMgplus = (function ( $ ) {
     */
     const TEMPLATE = ({ url, title, published, actor, access, object }) => `
         <li class=".post">
-            <h2 class="post-list__post-title post-title"><a href="${url}" title="${title}">${title}</a></h2>
+            <h2 class="post-list__post-title post-title"><a href="${url}" title="${title}" target="_blank">${title}</a></h2>
             <p class="excerpt">${object.content}&hellip;</p>
             <div class=post-list__meta>
 		 <strong>[${access.description}]</strong>
@@ -29,7 +29,7 @@ var SGAMgplus = (function ( $ ) {
             </div>
             <div class="post-list__meta">
                 <time datetime="${published}" class="post-list__meta--date date">${published}</time>
-                &#8226; <span class="post-meta__tags">by <a href="${actor.url}">${actor.displayName}</a></span>
+                &#8226; <span class="post-meta__tags">by <a href="${actor.url}" target="_blank">${actor.displayName}</a></span>
             </div>
             <hr class="post-list__divider">
         </li>
@@ -173,21 +173,24 @@ var SGAMgplus = (function ( $ ) {
          */
         go: function(){
             //$(document).ready(function () {
+                $('.panel-cover').unbind('cssClassChanged');
                 init();
             //});
         },
         
         /**
          * Render g+ comments on comment-enabled pages.
+         * Credit: https://gist.github.com/brandonb927/6433230 
+         * Width: http://ryanve.com/lab/dimensions/
          */
         renderComments: function() {
-            // gapi.commentcount.render('commentscounter', {
+            // gapi.commentcount.render('SGAMgplusCommentsCounter', {
             //     href: window.location
             // });
 
-            gapi.comments.render('comments', {
+            gapi.comments.render('SGAMgplusComments', {
                 href: window.location,
-                width: (window.screen.availWidth * .08),
+                width: ($('#SGAMgplusComments').width()),
                 first_party_property: 'BLOGGER',
                 view_type: 'FILTERED_POSTMOD'
             });
@@ -200,19 +203,34 @@ var SGAMgplus = (function ( $ ) {
 //SGAMgplus.startApp();
 
 function startApp() {
-    // We'll only load stuff if we're on the #sgam page 
-    // with a "collapsed" cover
-    if ( !(window.location.hash && window.location.hash == '#sgam')
-        || !( $('.panel-cover').hasClass('panel-cover--collapsed') ) ) {
-        // Wait for it...
-        console.log('[SGAM] Observing the cover collapse for application start...');
-        $('.panel-cover').bind('cssClassChanged', function(){ 
-            console.log('[SGAM] Observer starting application...');
-            SGAMgplus.go();
-        });
+    // Render comments if it's relevant
+    SGAMgplus.renderComments();
+    
+    // We'll only load stuff if we're on the index page ...
+    if (window.location.pathname !== '{{ site.baseurl }}/' 
+        && window.location.pathname !== '{{ site.baseurl }}/index.html') {
         return;
     }
+            
+    // ...and only with a "collapsed" cover
+    if ( !(window.location.hash && window.location.hash == '#sgam')    
+        || !( $('.panel-cover').hasClass('panel-cover--collapsed') ) ) {
 
+        // ... but, we'll wait for it...
+        console.log('[SGAM] Observing the cover collapse for application start...');
+        $('.panel-cover').bind('cssClassChanged', function(){ 
+            if( $('.panel-cover').hasClass('panel-cover--collapsed') 
+                || $('.panel-cover').width() >= 960) {
+                // ...and start when it's ready
+                console.log('[SGAM] Observer starting application...');
+                SGAMgplus.go();
+            }
+        });
+        
+        return;
+    }
+        
+    // Otherwise we're good to start
     console.log('[SGAM] Starting application...')
     SGAMgplus.go();
 }

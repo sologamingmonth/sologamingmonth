@@ -1,5 +1,6 @@
 ---
 layout: page
+comments: false
 title: Solo Gaming Appreciation Month
 permalink: /about/
 ---

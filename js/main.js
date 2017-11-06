@@ -17,7 +17,7 @@ sitemap:
         // return the original result
         return result;
     }
-})(jQuery);
+})();
 
 $(document).ready(function () {
   $('a.blog-button').click(function (e) {
@@ -29,6 +29,7 @@ $(document).ready(function () {
     } else {
       $('.panel-cover').css('max-width', currentWidth)
       $('.panel-cover').animate({'max-width': '600px', 'width': '40%'}, 400, swing = 'swing', function () {})
+      $('.panel-cover').trigger('cssClassChanged');
     }
   })
 
