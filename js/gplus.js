@@ -200,6 +200,20 @@ var SGAMgplus = (function ( $ ) {
 //SGAMgplus.startApp();
 
 function startApp() {
+    // We'll only load stuff if we're on the #sgam page 
+    // with a "collapsed" cover
+    if ( !(window.location.hash && window.location.hash == '#sgam')
+        || !( $('.panel-cover').hasClass('panel-cover--collapsed') ) ) {
+        // Wait for it...
+        console.log('[SGAM] Observing the cover collapse for application start...');
+        $('.panel-cover').bind('cssClassChanged', function(){ 
+            console.log('[SGAM] Observer starting application...');
+            SGAMgplus.go();
+        });
+        return;
+    }
+
+    console.log('[SGAM] Starting application...')
     SGAMgplus.go();
 }
 
