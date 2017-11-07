@@ -56,9 +56,6 @@ var SGAMgplus = (function ( $ ) {
         // });
         
         gapi.load('client', initClient);
-    
-        // Bind pagination to the scroll event
-        //$(document).scroll(infiniteScroll);
     }
     
     /**
@@ -68,7 +65,7 @@ var SGAMgplus = (function ( $ ) {
         gapi.client.init({
           apiKey: API_KEY,
           discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/plus/v1/rest']
-        }).then(infiniteScroll)
+        }).then(loadHashtags)
     }
     
     /**
@@ -83,7 +80,7 @@ var SGAMgplus = (function ( $ ) {
           'maxResults'  : MAX_RESULTS,
           'pageToken'   : PageToken
         }).then(function(response) {
-            
+            console.log('[SGAM] Loading hashtags...');
             // Convert to JSON
             var result = $.parseJSON(response.body);
             var items = result.items;
@@ -107,10 +104,13 @@ var SGAMgplus = (function ( $ ) {
             $(FEED_SELECTOR).append(items.map(TEMPLATE).join(''));
         
         }, function(reason) {
-            console.log('Error: ' + reason.result.error.message);
+            console.log('[SGAM] Error: ' + reason.result.error.message);
         }).then(function() {
             if(PageToken) {
                 $(document).scroll(infiniteScroll);
+            }
+            else {
+                $('#SGAMgplusReload').html('<i class="icon icon-die-one"></i>');
             }
         });
     }
@@ -139,6 +139,8 @@ var SGAMgplus = (function ( $ ) {
      * Determine if last paginated item has been reached
      */
     function shouldScroll(elem) {
+        // TODO: This doesn't quite work on my mobile device... added a 
+        // link to reload manually as a workaround.
         var docViewTop = $(window).scrollTop();
         var docViewBottom = docViewTop + $(window).height();
 
@@ -154,6 +156,8 @@ var SGAMgplus = (function ( $ ) {
     function infiniteScroll() {
         // See if the last <li> is within view
         if ( shouldScroll( FEED_SELECTOR + ' li:last') ) {
+        // var ele = $(FEED_SELECTOR);
+        // if($(ele).scrollTop() + $(ele).innerHeight() >= $(ele)[0].scrollHeight) {
 
             // Stop the pagination
             $(document).unbind('scroll');
@@ -177,6 +181,11 @@ var SGAMgplus = (function ( $ ) {
                 init();
             //});
         },
+        
+        /**
+         * Force a hashtag pull
+         */
+        loadHashtags: loadHashtags,
         
         /**
          * Render g+ comments on comment-enabled pages.

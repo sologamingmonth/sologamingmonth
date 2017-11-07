@@ -59,8 +59,7 @@ Examples:
   * Chart of random things
   * A game designed for 1 player
   * [more ideas](http://link_to_ideas)
-2. **Share it** on social media with the **#SGAM** and/or **#SGAM<year>** (e.g. 
-#SGAM2017) hashtags. 
+2. **Share it** on social media with the **#SGAM** and/or **#SGAM{{ site.time | date: '%Y' }} hashtags. 
 3. **Check us out** on Google+ at the [Lone Wolf Role-Playing]() community. There's 
 a [category](https://plus.google.com/communities/116965157741523529510/stream/585437a3-a1dc-49d2-a1f2-a1560d540ee3)
 there with more information.
