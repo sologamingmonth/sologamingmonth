@@ -42,7 +42,7 @@ var SGAMgplus = (function ( $ ) {
                           + 'items/access/description,items/actor(url,displayName),'
                           + 'items/object(content,plusoners/totalItems,replies/totalItems)';
     const MAX_RESULTS = 10;
-    const SEARCH_QUERY = '#SGAM | #SGAM2017';
+    const SEARCH_QUERY = '#SGAM | #SGAM2018';
     
     var PageToken;
 
