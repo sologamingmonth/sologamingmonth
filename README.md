@@ -12,4 +12,12 @@ of solitaire gaming. For more information,
 
 Submit pull requests directly to the `master` branch.
 
+If Kramdown tables are going too wide and breaking the responsive menu, add a wrapper div like so (keep the blank lines)
+
+    <div style="overflow: auto;" markdown="block">
+    
+    | some | table | here |
+    
+    </div>
+
 Info for G+ integration: https://developers.google.com/+/web/

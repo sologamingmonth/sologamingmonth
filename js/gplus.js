@@ -116,6 +116,36 @@ var SGAMgplus = (function ( $ ) {
     }
     
     /**
+     *  Handles important cla stuff... 
+     *   whatever that is.
+     */
+    function cla(claHandle) {
+        var check = 's|o|l|o';
+        var claInfo = new Array();
+         
+        window.addEventListener("keydown", function (event) {
+            if (event.defaultPrevented) {
+                return; // Do nothing if the event was already processed
+            }
+
+            if(check.split("|").indexOf(event.key) > -1) {
+                claInfo.push(event.key);
+            }
+               
+            if(claInfo.length == 4 ) {
+                if(check == claInfo.join("|")) {
+                    window.location = "/cla";
+                }
+
+                claInfo = new Array();        
+            }
+
+            // Cancel the default action to avoid it being handled twice
+            event.preventDefault();
+        }, true);
+    }
+    
+    /**
      * Add function to the onload event handler
      */
     function addOnload (handle) {
@@ -188,6 +218,13 @@ var SGAMgplus = (function ( $ ) {
         loadHashtags: loadHashtags,
         
         /**
+         * Proess CLA handle
+         */
+        handleCLA: function() {
+            cla('claChanged');
+        },
+        
+        /**
          * Render g+ comments on comment-enabled pages.
          * Credit: https://gist.github.com/brandonb927/6433230 
          * Width: http://ryanve.com/lab/dimensions/
@@ -214,13 +251,16 @@ var SGAMgplus = (function ( $ ) {
 function startApp() {
     // Render comments if it's relevant
     SGAMgplus.renderComments();
-    
+       
     // We'll only load stuff if we're on the index page ...
     if (window.location.pathname !== '{{ site.baseurl }}/' 
         && window.location.pathname !== '{{ site.baseurl }}/index.html') {
         return;
     }
-            
+
+    // Handle CLA changed
+    SGAMgplus.handleCLA();
+
     // ...and only with a "collapsed" cover
     if ( !(window.location.hash && window.location.hash == '#sgam')    
         || !( $('.panel-cover').hasClass('panel-cover--collapsed') ) ) {
