@@ -6,7 +6,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 
         Use the #SGAM and #SGAM2018 tags on social media to join in!
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://sologamingmonth.com"
+url: "https://sologamingmonth.com"
 
 author:
   name: 'Solo Gaming Appreciation Month'

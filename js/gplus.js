@@ -7,7 +7,7 @@ sitemap:
     G+ Integration for SGAM
 
     @author Spencer Salyer
-    @url: http://sologamingmonth.com
+    @url: https://sologamingmonth.com
     @date: %%buildDate%%
     @version: %%buildVersion%%
  */
