@@ -12,13 +12,14 @@ private) _Solo Nexus_ blog in November of 2011 -- because of the **11/11**
 date -- and he thought it would end there. The idea, however, was resurrected 
 in 2015 by [+Steven Lincoln](https://plus.google.com/+StevenLincolnTCS/posts/ZvZ9UinnESK) 
 at the [**Lone Wolf Role-Playing G+**](https://plus.google.com/communities/116965157741523529510) 
+(and now [**MeWe**](https://mewe.com/group/5bbbfc02a40f3002b3637fdc) )
 community and has continued annually since.
 
 <div class="g-community" data-layout="portrait" data-width="300" data-href="https://plus.google.com/communities/116965157741523529510"></div>
 
 While John never anticipated that it would go past that first month, amazing 
 people like +Alex Yari, +Chris Stieha, and everyone else at the  
-**Lone Wolf Role-Playing G+** community (and elsewhere) keep the torch burning!
+**Lone Wolf Role-Playing G+/MeWe** communities (and elsewhere) keep the torch burning!
 
 ## But, What is **SGAM**?
 
