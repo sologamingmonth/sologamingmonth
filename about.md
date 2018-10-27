@@ -12,14 +12,30 @@ private) _Solo Nexus_ blog in November of 2011 -- because of the **11/11**
 date -- and he thought it would end there. The idea, however, was resurrected 
 in 2015 by [+Steven Lincoln](https://plus.google.com/+StevenLincolnTCS/posts/ZvZ9UinnESK) 
 at the [**Lone Wolf Role-Playing G+**](https://plus.google.com/communities/116965157741523529510) 
-(and now [**MeWe**](https://mewe.com/group/5bbbfc02a40f3002b3637fdc) )
 community and has continued annually since.
 
 <div class="g-community" data-layout="portrait" data-width="300" data-href="https://plus.google.com/communities/116965157741523529510"></div>
 
 While John never anticipated that it would go past that first month, amazing 
 people like +Alex Yari, +Chris Stieha, and everyone else at the  
-**Lone Wolf Role-Playing G+/MeWe** communities (and elsewhere) keep the torch burning!
+**Lone Wolf Role-Playing G+** community keep the torch burning!
+
+## Google+ Sunset
+
+As you may well know, the Google+ team [recently announced the sunset of Google+](https://plus.google.com/+googleplus/posts/gxoJEZfRjPd).
+This has been a real bummer for the vibrant RPG community there, and of course, the Lone Wolf Roleplaying group. In August of 
+2019, G+ will shut its doors!
+
+### New Home?
+
+The question we've all been asking ourselves: what's next? Unfortunately, there's no easy or unanimous answer. For now, 
+we're all testing the waters of various other platforms:
+
+* Join our new MeWe group at: [https://mewe.com/group/5bbbfc02a40f3002b3637fdc](https://mewe.com/group/5bbbfc02a40f3002b3637fdc)
+* Join our Reddit group at: [https://www.reddit.com/r/Solo_Roleplaying/](https://www.reddit.com/r/Solo_Roleplaying/)
+* Our Discord chat channel is at: [https://discord.gg/jwYknJY](https://discord.gg/jwYknJY)
+* We're also collecting a solo gaming blog listing at: [https://www.reddit.com/r/Solo_Roleplaying/wiki/soloblogdirectory](https://www.reddit.com/r/Solo_Roleplaying/wiki/soloblogdirectory)
+
 
 ## But, What is **SGAM**?
 
