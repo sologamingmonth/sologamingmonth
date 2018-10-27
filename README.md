@@ -27,7 +27,8 @@ plenty of guides on the web for running Jekyll locally on your operating system 
 The code is organized like most Jekyll projects, with posts going into the `/_posts` 
 directory and templates in the `/_layout` and `_includes` directory. CSS is compiled from SASS.
 
-The `index.html` file in the root folder is the landing page and kicks off the G+ javascript.
+The `index.html` file in the root folder is the landing page and kicks off the G+ javascript, 
+but most of the landing page content is in `/_includes/header.html`.
 
 I've been creating a sgam<year>.md file in the root folder as well to aggregate information 
 for each year. Otherwise, individual posts go in the `/_posts` directory. The `/news` directory 
