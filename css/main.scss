@@ -6,6 +6,13 @@
 
 /* Modifications */
 
+img.float-left {
+  max-width: 10em;
+  float: left;
+  height: auto;
+  padding: .5em;
+}
+
 pre.highlight,
 .highlight pre {
   padding: 10px;
