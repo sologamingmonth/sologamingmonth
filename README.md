@@ -60,10 +60,12 @@ add a wrapper `div` like so (keep the blank lines between the `<div>` elements a
 
 ### Social Integration 
 
-We've currently pulling in Google+ posts with an "activity" search based on the #SGAM and #SGAM<current year> 
-hashtags. That code is in `/js/gplus.js` and G+ documentation is here: https://developers.google.com/+/web/
+~~We've currently pulling in Google+ posts with an "activity" search based on the #SGAM and #SGAM<current year> 
+hashtags. That code is in `/js/gplus.js` and G+ documentation is here: https://developers.google.com/+/web/~~
 
-Comments are also supplied via G+ integration, "borrowed" from Bloggr.
+~~Comments are also supplied via G+ integration, "borrowed" from Bloggr.~~
+
+#### TODO
 
 In 2018, Google announced the sunset of Google+ and the Lone Wolf G+ community is feeling out 
 various other platforms (MeWe, Discord, Reddit, etc.). At some point before SGAM 2018, it would be good to look into these 

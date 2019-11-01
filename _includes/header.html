@@ -17,8 +17,8 @@
         <div class="panel-cover__description">
         <p style="margin-bottom: 0px">
             A concerted effort of the <a 
-            href="https://plus.google.com/communities/116965157741523529510" 
-            style="color: red;">Lone Wolf Role-Playing</a> Google+ community, 
+            href="{% post_url 2018-10-20-gplus_sunset %}" 
+            style="color: red;">Lone Wolf Role-Playing</a> community, 
             <strong>SGAM</strong> occurs for 
             the duration of <strong>November</strong>, and is dedicated to the 
             enjoyment of <strong>solitaire tabletop gaming</strong>.
@@ -31,8 +31,8 @@
             </a>
         </p>
         <p>
-            Use the <a href="{{ site.baseurl }}/#sgam" class="blog-button" style="color: red;">#SGAM</a> and
-            <a href="{{ site.baseurl }}/#sgam" class="blog-button" style="color: red;">#SGAM{{ site.time | date: '%Y' }}</a> 
+            Use the <a href="https://twitter.com/hashtag/SGAM" class="blog-button" style="color: red;">#SGAM</a> and
+            <a href="https://twitter.com/hashtag/SGAM{{ site.time | date: '%Y' }}" class="blog-button" style="color: red;">#SGAM{{ site.time | date: '%Y' }}</a> 
             tags on <a href="{% post_url 2018-10-20-gplus_sunset %}" style="color: red;">social media</a> to join in!
         </p>
         </div>
@@ -42,11 +42,11 @@
 
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-                <li class="navigation__item"><a href="{{ site.baseurl }}/sgam2018" title="SGAM2018" style="color: red;">SGAM 2018</a></li>
-                <li class="navigation__item"><a href="{{ site.baseurl }}/#sgam" class="blog-button" title="#SGAM">#SGAM Tag Feed</a></li>
+                <li class="navigation__item"><a href="{{ site.baseurl }}/sgam2019" title="SGAM2019" style="color: red;">SGAM 2019</a></li>
                 <li class="navigation__item"><a href="{{ site.baseurl }}/news" title="SGAM News">News</a></li>
                 <li class="navigation__item"><a href="{{ site.baseurl }}/about" title="About SGAM">What is SGAM?</a></li>
                 <li class="navigation__item"><a href="{{ site.baseurl }}/sgam2017" title="SGAM2017">SGAM 2017</a></li>
+                <li class="navigation__item"><a href="{{ site.baseurl }}/sgam2018" title="SGAM2017">SGAM 2018</a></li>
             </ul>
           </nav>
 
@@ -82,17 +82,7 @@
                 </a>
               </li>
             {% endif %}
-           
-            {% if site.author.gplus_username %}
-              <!-- Google+ -->
-              <li class="navigation__item">
-                <a href="https://plus.google.com/{{ site.author.gplus_username }}" title="{{ site.author.gplus_username }} on Google+" target="_blank">
-                  <i class="icon icon-social-google-plus"></i>
-                  <span class="label">Google+</span>
-                </a>
-              </li>
-            {% endif %}
-            
+                      
             {% if site.author.github_username %}
               <!-- GitHub -->
               <li class="navigation__item">
