@@ -29,3 +29,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # bundle exec jekyll serve recommended, but it wouldn't load?
 #gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
+
+# 2019.11.01 - security fixes
+gem "jekyll", ">= 3.6.3"
+gem "ffi", ">= 1.9.24"
+gem "nokogiri", ">= 1.10.4"

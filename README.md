@@ -2,7 +2,7 @@
 
 This is the website for [Solo Gaming Appreciation Month](https://sologamingmonth.com) 
 -- a community effort by the 
-[Lone Wolf Role-playing Google+ group](https://plus.google.com/communities/116965157741523529510). 
+[Lone Wolf Role-playing group](https://sologamingmonth.com/2018/gplus_sunset/). 
 
 **SGAM** occurs annually for the duration of November, and is dedicated to the enjoyment
 of solitaire gaming. For more information, 
@@ -67,7 +67,7 @@ hashtags. That code is in `/js/gplus.js` and G+ documentation is here: https://d
 
 #### TODO
 
-In 2018, Google announced the sunset of Google+ and the Lone Wolf G+ community is feeling out 
+In 2018, [Google announced the sunset of Google+](https://sologamingmonth.com/2018/gplus_sunset/) and the Lone Wolf Solo Roleplaying community is feeling out 
 various other platforms (MeWe, Discord, Reddit, etc.). At some point before SGAM 2018, it would be good to look into these 
 other platforms and possible integration into the site with a similar hashtag feed, sharing, 
 and home for comments
