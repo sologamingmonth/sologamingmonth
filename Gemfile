@@ -38,3 +38,4 @@ gem "ffi", ">= 1.9.24"
 # 2020.11.02 - security fixes
 gem "kramdown", ">= 2.3.0"
 gem "nokogiri", ">= 1.10.8"
+gem "activesupport", ">= 4.1.11"
