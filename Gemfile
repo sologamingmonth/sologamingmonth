@@ -33,4 +33,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 2019.11.01 - security fixes
 gem "jekyll", ">= 3.6.3"
 gem "ffi", ">= 1.9.24"
-gem "nokogiri", ">= 1.10.4"
+#gem "nokogiri", ">= 1.10.4"
+
+# 2020.11.02 - security fixes
+gem "kramdown", ">= 2.3.0"
+gem "nokogiri", ">= 1.10.8"
